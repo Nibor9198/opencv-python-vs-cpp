@@ -56,13 +56,10 @@ if __name__ == "__main__":
         final_frame = cv2.resize(crop_frame, (width,height))
 
         out.write(final_frame)
-        
         #cv2.imshow('Cropped',final_frame)
-        
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
 
-    
     cap.release()
 
     out.release()
