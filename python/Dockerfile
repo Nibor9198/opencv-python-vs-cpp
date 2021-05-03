@@ -14,9 +14,8 @@ COPY footage.mp4 .
 RUN pip install -r requirements.txt
 
 # Copy sourcecode
-copy main.py .
+COPY main.py .
 
 # Run
 CMD ["python3", "main.py"]
 
-COPY result.avi .

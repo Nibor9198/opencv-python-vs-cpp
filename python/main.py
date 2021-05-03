@@ -6,7 +6,7 @@ import time
 if __name__ == "__main__":
     print("Hello World")
 
-    jaw_in, pitch_in, zoom_in = 0,0,1
+    jaw_in, pitch_in, zoom_in = 0,0,4
 
     cap = cv2.VideoCapture('footage.mp4')
     cnt = 0  # Initialize frame counter
@@ -22,8 +22,8 @@ if __name__ == "__main__":
     height = 480
 
     # The output, subject to change
-    fourcc = cv2.VideoWriter_fourcc(*'XVID')
-    out = cv2.VideoWriter('result.avi', fourcc, fps, (width, height))
+    #fourcc = cv2.VideoWriter_fourcc(*'XVID')
+    #out = cv2.VideoWriter('result.avi', fourcc, fps, (width, height))
 
     if not cap.isOpened():
         print("Can't open input source")
@@ -33,7 +33,9 @@ if __name__ == "__main__":
 
         jaw_in += 0.1
         pitch_in += 0.1
-        zoom_in -= 0.0001
+
+        if pitch_in > 1:
+            pitch_in = 0
 
         ret, frame = cap.read()  # Capture frame by frames
         cnt += 1  # Counting the frames
@@ -55,12 +57,13 @@ if __name__ == "__main__":
         # Resize the frame
         final_frame = cv2.resize(crop_frame, (width,height))
 
-        out.write(final_frame)
+        #out.write(final_frame)
         #cv2.imshow('Cropped',final_frame)
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
 
     cap.release()
 
-    out.release()
+    #out.release()
     cv2.destroyAllWindows()
+    print("Done")
