@@ -40,7 +40,6 @@ int main(int, char**){
 
     double output_height = 640;
     double output_width = 480;
-    // VideoWriter video("result.avi",CV_FOURCC('X','V','I','D'),cap.get(CAP_PROP_FPS) , Size(frame_width,frame_height));
 
     for (;;)
     {
